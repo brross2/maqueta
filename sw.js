@@ -1,6 +1,6 @@
 // Maqueta — service worker. Cambia solo cuando cambia la app (la versión sale del contenido de index.html).
-const V = 'maqueta-26289868fc';
-const CORE = ['./', 'index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
+const V = 'maqueta-26443f37f2';
+const CORE = ['./', 'index.html', 'config.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
 const CDN = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
 const EXTRA = ['cdnjs.cloudflare.com', 'fonts.googleapis.com', 'fonts.gstatic.com'];   // se guardan al usarse; Google (accounts, Drive) no se toca
 self.addEventListener('install', e => {
@@ -26,6 +26,7 @@ self.addEventListener('fetch', e => {
       e.respondWith(fetch(r).then(x => keep('index.html', x)).catch(() => caches.match('index.html')));
       return;
     }
+    if(u.pathname.endsWith('/config.js')){ e.respondWith(fetch(r).then(x => keep(r, x)).catch(() => caches.match(r))); return; }   // la configuración: primero la red, así un cambio se nota enseguida
     e.respondWith(caches.match(r).then(h => h || fetch(r).then(x => keep(r, x))));
     return;
   }
