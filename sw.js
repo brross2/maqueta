@@ -1,5 +1,5 @@
 // Maqueta — service worker. Cambia solo cuando cambia la app (la versión sale del contenido de index.html).
-const V = 'maqueta-14c1aa6a1d';
+const V = 'maqueta-cba788aaed';
 const CORE = ['./', 'index.html', 'config.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
 const CDN = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
 const EXTRA = ['cdnjs.cloudflare.com', 'fonts.googleapis.com', 'fonts.gstatic.com'];   // se guardan al usarse; Google (accounts, Drive) no se toca
